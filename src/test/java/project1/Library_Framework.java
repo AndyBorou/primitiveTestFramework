@@ -30,7 +30,7 @@ public class Library_Framework {
     @BeforeMethod
     private void beforeMethod() {
         homePage = new LoginPage(driver, "http://newtours.demoaut.com/")
-                .login("Mercury", "mercury");
+                .login("Mercury123", "mercury");
     }
 
     @Test
