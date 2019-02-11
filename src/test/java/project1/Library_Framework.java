@@ -29,8 +29,7 @@ public class Library_Framework {
 
     @BeforeMethod
     private void beforeMethod() {
-        homePage = new LoginPage(driver, "http://newtours.demoaut.com/")
-                .login("Mercury123", "mercury");
+        homePage = new LoginPage(driver, "http://newtours.demoaut.com/").login("Mercury", "mercury");
     }
 
     @Test
