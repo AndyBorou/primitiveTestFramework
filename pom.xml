@@ -7,8 +7,68 @@
   <groupId>part1</groupId>
   <artifactId>part1</artifactId>
   <version>1.0-SNAPSHOT</version>
+
+  <!--Configure properties file for maven profile-->
+  <profiles>
+    <profile>
+      <id>firefox</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <browser>firefox</browser>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>chrome</id>
+      <properties>
+        <browser>chrome</browser>
+      </properties>
+    </profile>
+  </profiles>
+  <!--Configure properties file for maven profile-->
   <build>
+    <!--configure properties file path-->
+    <filters>
+      <filter>src/main/resources/mavenProfilesSources/config.${browser}.properties</filter>
+    </filters>
+
+    <resources>
+      <resource>
+        <directory>src/main/resources/mavenProfilesDestination</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+    <!--configure properties file path-->
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer
+                  implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>project1.*</mainClass>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!--configure properties file path-->
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

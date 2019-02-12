@@ -15,19 +15,13 @@ public class Waiter {
     }
 
     public WebElement waitForElementToBeDisplayed(WebElement element){
-        return new WebDriverWait(webDriver, 20).until(
+        return new WebDriverWait(webDriver, 30).until(
                 ExpectedConditions.visibilityOf(element)
         );
     }
 
-    public List<WebElement> waitForElementsListToBeDisplayed(List<WebElement> element){
-
-       waitForElementToBeDisplayed(element.get(0));
-       return element;
-    }
-
     public WebElement waitForElementToBeClicable(WebElement element){
-        return new WebDriverWait(webDriver, 20).until(
+        return new WebDriverWait(webDriver, 30).until(
                 ExpectedConditions.elementToBeClickable(element)
         );
     }

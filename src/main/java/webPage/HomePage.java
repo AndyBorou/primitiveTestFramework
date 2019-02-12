@@ -3,6 +3,7 @@ package webPage;
 import static helper.ProcessElement.getValue;
 
 import java.util.List;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,8 +13,8 @@ public class HomePage extends  PageObject{
     @FindBy(xpath = ".//*[contains(text(), 'SIGN-OFF')]")
     private WebElement logOutButton;
 
-    @FindBy(xpath = ".//input[contains(@name, 'servClass')]")
-    private List<WebElement> classesTypes;
+    By classType = By.xpath(".//input[contains(@name, 'servClass')]");
+
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -26,6 +27,7 @@ public class HomePage extends  PageObject{
     }
 
     public List<String> getValues(){
-        return getValue(waiter.waitForElementsListToBeDisplayed(classesTypes));
+        waiter.waitForElementToBeClicable(driver.findElement(classType));
+        return getValue(driver.findElements(classType));
     }
 }
