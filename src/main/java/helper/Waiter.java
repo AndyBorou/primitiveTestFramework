@@ -1,7 +1,6 @@
 package helper;
 
 import java.util.List;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,7 +15,7 @@ public class Waiter {
     }
 
     public WebElement waitForElementToBeDisplayed(WebElement element){
-        return new WebDriverWait(webDriver, 10).until(
+        return new WebDriverWait(webDriver, 20).until(
                 ExpectedConditions.visibilityOf(element)
         );
     }
@@ -28,7 +27,7 @@ public class Waiter {
     }
 
     public WebElement waitForElementToBeClicable(WebElement element){
-        return new WebDriverWait(webDriver, 10).until(
+        return new WebDriverWait(webDriver, 20).until(
                 ExpectedConditions.elementToBeClickable(element)
         );
     }

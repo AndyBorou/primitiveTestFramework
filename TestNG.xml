@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="TestSuite">
+
+  <parameter name="paramName1"  value="iPhone"/>
+
+  <test name="testNgTest">
+    <!-- This parameter will be passed this test only -->
+
+    <parameter name="paramName2" value="ItCanBePassword" />
+    <classes>
+      <class name="project1.Library_Framework">
+        <methods>
+          <include name="test1" />
+        </methods>
+      </class>
+    </classes>
+  </test>
+
+</suite>
+
+
+
