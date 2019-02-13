@@ -6,7 +6,6 @@
 
   <test name="testNgTest">
     <!-- This parameter will be passed this test only -->
-
     <parameter name="paramName2" value="ItCanBePassword" />
     <classes>
       <class name="project1.Library_Framework">

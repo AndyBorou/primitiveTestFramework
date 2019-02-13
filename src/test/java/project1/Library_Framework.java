@@ -59,7 +59,6 @@ public class Library_Framework {
 
     }
 
-
     @AfterMethod(alwaysRun = true)
     private void afterMethod() {
         homePage.logOut();

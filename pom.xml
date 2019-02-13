@@ -26,10 +26,14 @@
         <browser>chrome</browser>
       </properties>
     </profile>
+
   </profiles>
   <!--Configure properties file for maven profile-->
   <build>
     <!--configure properties file path-->
+    <!--command line-->
+    <!--test -P chrome -f pom.xml-->
+    <!--getting parameters from command line in to this place-->
     <filters>
       <filter>src/main/resources/mavenProfilesSources/config.${browser}.properties</filter>
     </filters>
@@ -84,28 +88,47 @@
         <version>2.18</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>TestNG.xml</suiteXmlFile>
+            <!--<suiteXmlFile>TestNG.xml</suiteXmlFile>-->
+            <!--<suiteXmlFile>TestNgGroup.xml</suiteXmlFile>-->
           </suiteXmlFiles>
         </configuration>
       </plugin>
-    </plugins>
-  </build>
 
-  <dependencies>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.19.1</version>
+        <configuration>
+          <!--command line-->
+          <!--clean install compile test -DsuiteXmlFile=TestNgFileWithSystemParametters.xml -DtestGroup=$acceptance -f pom.xml-->
 
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>6.14.3</version>
-      <scope>test</scope>
-    </dependency>
+          <!--getting parameters from command line in to this place and sent parameters from here to testng.xml file - group configuration in testng.xml file-->
+            <groups>${testGroup}</groups>
+          <suiteXmlFiles>
+            <!--getting parameters from command line in to this place - selecting testng file for exequting-->
+            <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+          </suiteXmlFiles>
+      </configuration>
+    </plugin>
 
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>3.10.0</version>
-    </dependency>
+  </plugins>
+</build>
 
-  </dependencies>
+<dependencies>
 
-</project>
+<dependency>
+  <groupId>org.testng</groupId>
+  <artifactId>testng</artifactId>
+  <version>6.14.3</version>
+  <scope>test</scope>
+</dependency>
+
+<dependency>
+  <groupId>org.seleniumhq.selenium</groupId>
+  <artifactId>selenium-java</artifactId>
+  <version>3.10.0</version>
+</dependency>
+
+</dependencies>
+
+  </project>

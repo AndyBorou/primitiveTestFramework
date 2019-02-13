@@ -1,0 +1,41 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="TestSuiteGroup">
+
+  <test name="acceptance_test">
+    <groups>
+      <run>
+        <include name="acceptance"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="project2"/>
+    </packages>
+  </test>
+
+  <test name="regression_test">
+    <groups>
+      <run>
+        <include name="regression"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="project2"/>
+    </packages>
+  </test>
+
+  <test name="unit_test">
+    <groups>
+      <run>
+        <include name="unit"/>
+      </run>
+    </groups>
+    <packages>
+      <package name="project2"/>
+    </packages>
+  </test>
+
+</suite>
+
+
+
